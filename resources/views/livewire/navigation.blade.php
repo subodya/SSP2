@@ -80,21 +80,21 @@
         </div>
     </div>
     <!-- Navigation Bar -->
-    <nav class="bg-[#001952] py-4 hidden lg:block">
-        <ul class="flex justify-evenly text-white uppercase font-bold text-lg" style="font-family: 'Inter', sans-serif;">
-<!-- Dog Dropdown -->
-<li class="relative group">
-    <a href="#" class="flex items-center">
-        Dog
-        <span class="ml-2"><i class="fa-solid fa-chevron-down"></i></span>
-    </a>
-    <!-- Dropdown Mega Menu -->
-    <div class="mega-menu hidden group-hover:block top-full w-[100%] bg-[#001952] py-4 px-4 z-10">
-        <div class="container mx-auto grid grid-cols-3 gap-4">
-            @foreach($c1->chunk(3) as $chunkedCategories)
+<nav class="bg-[#001952] py-4 hidden lg:block">
+    <ul class="flex justify-evenly text-white uppercase font-bold text-lg" style="font-family: 'Inter', sans-serif;">
+        <!-- Dog Dropdown -->
+        <li class="relative group">
+            <a href="#" class="flex items-center">
+                Dog
+                <span class="ml-2"><i class="fa-solid fa-chevron-down"></i></span>
+            </a>
+            <!-- Dropdown Mega Menu -->
+            <div class="mega-menu hidden group-hover:block absolute left-[-340%] top-full w-screen bg-[#001952] py-4 px-4 z-10">
+                <div class="container  flex mx-30">
+                @foreach($c1->chunk(3) as $chunkedCategories)
                 <ul>
                     @foreach($chunkedCategories as $subCategory)
-                        <li class="mb-2">
+                        <li class="mb-2 ml-8">
                             <a href="{{ url('/allProduct/' . $subCategory->id) }}" class="hover:text-gray-400 block">
                                 {{ $subCategory->name }}
                             </a>
@@ -102,61 +102,81 @@
                     @endforeach
                 </ul>
             @endforeach
-        </div>
-    </div>
-</li>
-
-            <!-- Cat Dropdown -->
-            <li class="relative group">
-                <a href="#" class="flex items-center">
-                    Cat
-                    <span class="ml-2"><i class="fa-solid fa-chevron-down"></i></span>
-                </a>
-                <!-- Dropdown Mega Menu -->
-                <div class="mega-menu hidden group-hover:block  w-[100%] bg-[#001952] py-4 px-4 z-10">
-                    <div class="container mx-auto flex justify-around">
-                        <ul>
-                            @foreach($c2 as $subCategory)
-                                <li class="mb-2"><a href="{{ url('/allProduct/' . $subCategory->id) }}" class="hover:text-gray-400">{{ $subCategory->name }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
                 </div>
-            </li>
-            <li class="relative group">
-                <a href="#" class="flex items-center">
-                    Fish
-                    <span class="ml-2"><i class="fa-solid fa-chevron-down"></i></span>
-                </a>
-                <!-- Dropdown Mega Menu -->
-                <div class="mega-menu hidden group-hover:block  w-[100%] bg-[#001952] py-4 px-4  z-10">
-                    <div class="container mx-auto flex justify-around">
-                        <ul>
-                            @foreach($c3 as $subCategory)
-                                <li class="mb-2"><a href="{{ url('/allProduct/' . $subCategory->id) }}" class="hover:text-gray-400">{{ $subCategory->name }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
+            </div>
+        </li>
+        <!-- Cat Dropdown -->
+        <li class="relative group">
+            <a href="#" class="flex items-center">
+                Cat
+                <span class="ml-2"><i class="fa-solid fa-chevron-down"></i></span>
+            </a>
+            <!-- Dropdown Mega Menu -->
+            <div class="mega-menu hidden group-hover:block absolute left-[-820%] top-full w-screen bg-[#001952] py-4 px-4 z-10">
+                <div class="container mx-auto flex ">
+                @foreach($c2->chunk(3) as $chunkedCategories)
+                <ul>
+                    @foreach($chunkedCategories as $subCategory)
+                        <li class="mb-2 ml-8">
+                            <a href="{{ url('/allProduct/' . $subCategory->id) }}" class="hover:text-gray-400 block">
+                                {{ $subCategory->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endforeach
                 </div>
-            </li>
-            <li class="relative group">
+            </div>
+        </li>
+        <!-- Fish Dropdown -->
+        <li class="relative group">
+            <a href="#" class="flex items-center">
+                Fish
+                <span class="ml-2"><i class="fa-solid fa-chevron-down"></i></span>
+            </a>
+            <!-- Dropdown Mega Menu -->
+            <div class="mega-menu hidden group-hover:block absolute left-[-1200%] top-full w-screen bg-[#001952] py-4 px-4 z-10">
+                <div class="container mx-auto flex">
+                @foreach($c3->chunk(3) as $chunkedCategories)
+                <ul>
+                    @foreach($chunkedCategories as $subCategory)
+                        <li class="mb-2 ml-8">
+                            <a href="{{ url('/allProduct/' . $subCategory->id) }}" class="hover:text-gray-400 block">
+                                {{ $subCategory->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endforeach
+                </div>
+            </div>
+        </li>
+        <!-- Health & Wellness Dropdown -->
+        <li class="relative group">
                 <a href="#" class="flex items-center">
                     Health & Wellness
                     <span class="ml-2"><i class="fa-solid fa-chevron-down"></i></span>
                 </a>
                 <!-- Dropdown Mega Menu -->
-                <div class="mega-menu hidden group-hover:block w-[100%] bg-[#001952] py-4 px-4  z-10">
-                    <div class="container mx-auto flex justify-around">
-                        <ul>
-                            @foreach($c4 as $subCategory)
-                                <li class="mb-2"><a href="{{ url('/allProduct/' . $subCategory->id) }}" class="hover:text-gray-400">{{ $subCategory->name }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <div class="mega-menu hidden group-hover:block absolute left-[-500%] top-full w-screen bg-[#001952] py-4 px-4 z-10">
+                <div class="container mx-auto flex ">
+                @foreach($c4->chunk(1) as $chunkedCategories)
+                <ul>
+                    @foreach($chunkedCategories as $subCategory)
+                        <li class="mb-2 ml-8 ">
+                            <a href="{{ url('/allProduct/' . $subCategory->id) }}" class="hover:text-gray-400 block">
+                                {{ $subCategory->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endforeach
                 </div>
+            </div>
             </li>
-        </ul>
-    </nav>
+
+    </ul>
+</nav>
     <!-- JavaScript for toggling menu and search -->
     <script>
         const menuToggle = document.getElementById('menu-toggle');

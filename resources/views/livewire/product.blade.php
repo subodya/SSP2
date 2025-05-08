@@ -64,6 +64,7 @@
                         </li>
                     </ul>
                    
+                    <p class="text-[#001952] text-3xl font-semibold" style="font-family: 'League Spartan', sans-serif;">{{ $product->price }} LKR</p>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 py-8">
                         <div class="flex sm:items-center sm:justify-center w-full">

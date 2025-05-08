@@ -60,17 +60,11 @@
             </li>
 
 
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link" id="changeDetails">
-                    <i class="lni lni-cog"></i>
-                    <span>Change admin details.
-                    </span>
-                </a>
-            </li>
+
 
         </ul>
         <div class="sidebar-footer">
-            <a href="#" class="sidebar-link" onclick="logOutAdmin()">
+            <a href="/adminLogin" class="sidebar-link" onclick="logOutAdmin()">
                 <i class="lni lni-exit"></i>
                 <span>Logout</span>
             </a>

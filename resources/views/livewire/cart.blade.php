@@ -1,4 +1,5 @@
 <div>
+    {{-- Nothing in the world is as soft and yielding as water. --}}
     <section
         class=" relative z-10 after:contents-[''] after:absolute after:z-0 after:h-full xl:after:w-1/3 after:top-0 after:right-0 after:bg-gray-50">
         <div class="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto relative z-10">
@@ -7,7 +8,7 @@
                     class="col-span-12 xl:col-span-8 lg:pr-8 pt-14 pb-8 lg:py-24 w-full max-xl:max-w-3xl max-xl:mx-auto">
                     <div class="flex items-center justify-between pb-8 border-b border-gray-300">
                         <h2 class="font-manrope font-bold text-3xl leading-10 text-black">Shopping Cart</h2>
-                        <h2 class="font-manrope font-bold text-xl leading-8 text-gray-600">3 Items</h2>
+                        <h2 class="font-manrope font-bold text-xl leading-8 text-gray-600"><span id="items"></span> Items</h2>
                     </div>
                     <div class="grid grid-cols-12 mt-8 max-md:hidden pb-6 border-b border-gray-200">
                         <div class="col-span-12 md:col-span-7">
@@ -62,8 +63,8 @@
                             </div>
                             
                             <div class="flex items-center justify-between py-8">
-                                <p class="font-medium text-xl leading-8 text-black"><span id="itemCount">3</span> Items</p>
-                                <p class="font-semibold text-xl leading-8 text-indigo-600"><span id="price">1590</span> LKR</p>
+                                <p class="font-medium text-xl leading-8 text-black"><span id="itemCount"></span> Items</p>
+                                <p class="font-semibold text-xl leading-8 text-indigo-600"><span id="price"></span> LKR</p>
                             </div>
                             <button
                                 class="w-full text-center bg-indigo-600 rounded-xl py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-indigo-700">Checkout</button>
