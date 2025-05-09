@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('phone')->unique();  
+            $table->string('name')->nullable(); // Combine first_name and last_name into a single 'name' field
+        
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('isAdmin')->nullable();
+            $table->boolean('isAdmin')->default(false); // Use boolean for admin flag
             $table->rememberToken();
             $table->timestamps();
         });

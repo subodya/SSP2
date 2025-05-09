@@ -7,6 +7,9 @@ async function sendRequest({ method, url, data = {}, onSuccess, onError }) {
     try {
         let auth = localStorage.getItem("user") || null;
 
+        // Retrieve CSRF token from meta tag
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
         // Check if the request method is GET or HEAD (no body allowed)
         const isGetOrHead = method === "GET" || method === "HEAD";
 
@@ -14,6 +17,7 @@ async function sendRequest({ method, url, data = {}, onSuccess, onError }) {
             method,
             headers: {
                 'Accept': 'application/json',
+                ...(csrfToken && { 'X-CSRF-TOKEN': csrfToken }), // Add CSRF token to headers
                 ...(auth && { 'Authorization': `Bearer ${auth}` })
             }
         };
@@ -45,7 +49,6 @@ async function sendRequest({ method, url, data = {}, onSuccess, onError }) {
         } else {
             console.error("Request failed:", result);
             onError(result);
-
         }
     } catch (error) {
         console.error("Network error:", error);
@@ -68,59 +71,55 @@ function showToast(message, bgColor) {
 function register() {
     console.log("Registering user...");
     event.preventDefault();
+    //add first_name and last_name to the data object
+    const firstName = document.getElementById("first_name").value;
+    const lastName = document.getElementById("last_name").value;
+    const name= `${firstName} ${lastName}`; // Combine first and last name
 
     const data = {
-        first_name: document.getElementById("first_name").value,
-        last_name: document.getElementById("last_name").value,
+        name:name, // Laravel Breeze uses 'name' instead of first_name/last_name
         email: document.getElementById("email").value,
         password: document.getElementById("password").value,
-        phone: document.getElementById("mobile").value
+        password_confirmation: document.getElementById("password").value // Required for confirmation
     };
 
     sendRequest({
         method: "POST",
-        url: "http://127.0.0.1:8000/api/users/register", // Replace with actual endpoint
+        url: "http://127.0.0.1:8000/register", // Laravel Breeze register endpoint
         data: data,
         onSuccess: (response) => {
-            showToast(response.message, "bg-green-500");
-            localStorage.setItem("user", response.results)
-            //refresh page
-            location.reload();
-
+            showToast("Registration successful", "bg-green-500");
+            localStorage.setItem("user", JSON.stringify(response.user)); // Store user data
+            location.reload(); // Refresh page
         },
         onError: (error) => {
             console.error("Registration failed", error);
-            showToast(result.message || "An error occurred", "bg-red-500");
+            showToast(error.message || "An error occurred", "bg-red-500");
         }
     });
-
 }
 
 function login() {
-    console.log("Loging user...");
+    console.log("Logging in user...");
     event.preventDefault();
 
     const data = {
-
         email: document.getElementById("email").value,
-        password: document.getElementById("password").value,
-
+        password: document.getElementById("password").value
     };
 
     sendRequest({
         method: "POST",
-        url: "http://127.0.0.1:8000/api/users/login", // Replace with actual endpoint
+        url: "http://127.0.0.1:8000/login", // Laravel Breeze login endpoint
         data: data,
         onSuccess: (response) => {
-            showToast(response.message, "bg-green-500");
-            localStorage.setItem("user", response.results)
-            //refresh page
-            location.reload();
-
+            showToast("Login successful", "bg-green-500");
+            localStorage.setItem("user", JSON.stringify(response.user)); // Store user data
+            location.reload(); // Refresh page
         },
         onError: (error) => {
-            console.error("Registration failed", error);
-            showToast(result.message || "An error occurred", "bg-red-500");
+            console.error("Login failed", error);
+            showToast(error.message || "An error occurred", "bg-red-500");
         }
     });
 }

@@ -23,3 +23,5 @@ Route::get('/admin',Admin::class);
 Route::get('/adminLogin',function(){
     return view('adminLogin');
 });
+
+require __DIR__.'/auth.php';
