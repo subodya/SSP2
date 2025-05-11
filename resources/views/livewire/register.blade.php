@@ -28,10 +28,6 @@
         <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
         <input type="password" id="confirm_password" name="confirm_password" required class="mt-1 block w-full px-3 py-2 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base">
     </div>
-    <div class="mb-4 sm:mb-6">
-        <label for="mobile" class="block text-sm font-medium text-gray-700">Mobile Number</label>
-        <input type="mobile" id="mobile" name="password" required class="mt-1 block w-full px-3 py-2 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base">
-    </div>
   
     <div class="flex flex-col items-center">
         <button id="register" onclick="register()" class="w-full bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 sm:py-3 px-4 mt-4 sm:mt-6 rounded-full text-center text-sm sm:text-base">Sign Up</button>
