@@ -6,6 +6,8 @@ use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Action\ResponseProtocol;
 use App\Action\Authenticate; 
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class CartController
 {
@@ -15,7 +17,7 @@ class CartController
     public function index(Request $request)
     {
         //
-        $user = Authenticate::issLogin($request);
+        $user = Auth::user();
          $cart = Cart::with('product','product.subCategory')->where('user_id',$user->id)->get();
         return ResponseProtocol::success($cart);
     }
@@ -34,12 +36,12 @@ class CartController
                 'quantity' => 'required',
             ]);
 
-            $user = Authenticate::issLogin($request);
+            $user = Auth::id();;
 
             $cart=Cart::create([
                 'product_id' => $validated['product_id'],
                 'quantity' => $validated['quantity'],
-                'user_id' => $user->id,
+                'user_id' => $user,
             ]);
 
             return ResponseProtocol::success($cart);
