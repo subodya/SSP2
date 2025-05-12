@@ -155,10 +155,17 @@ document.getElementById('historyOrderBtn').addEventListener('click', () =>
 
 
 function deleteProduct(id){
+  // Get CSRF token from meta tag
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+  let data = { id };
+  if (csrfToken) {
+    data._token = csrfToken;
+  }
+
   sendRequest({
     method: "DELETE",
     url: `http://127.0.0.1:8000/api/products/delete`,
-    data: { id },
+    data: data,
     onSuccess: (result) => {
       console.log(result);
       showToast("Product deleted successfully");
@@ -185,6 +192,12 @@ function addProduct(){
     formData.append('stock', stock);
     formData.append('sub_category_id', subCategory);
     formData.append('image', image);
+  // Get CSRF token from meta tag
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+  if (csrfToken) {
+    formData.append('_token', csrfToken);
+  }
+
   sendRequest({
     method: "POST",
     url: `http://127.0.0.1:8000/api/products`,
@@ -206,10 +219,18 @@ function addProduct(){
 function addSubCategory(){
   let name = document.getElementById('subCategoryNameInput').value;
   let category = document.getElementById('categoryInput').value;
+
+  // Get CSRF token from meta tag
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+  let data = { name, category_id: category };
+  if (csrfToken) {
+    data._token = csrfToken;
+  }
+  
   sendRequest({
     method: "POST",
     url: `http://127.0.0.1:8000/api/subcategories`,
-    data: { name, category_id: category },
+    data: data,
     onSuccess: (result) => {
       console.log(result);
       showToast("Sub Category added successfully");
@@ -223,10 +244,17 @@ function addSubCategory(){
 
 
 function Deliverd(id){
+  // Get CSRF token from meta tag
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+  let data = { id, status: 'Delivered' };
+  if (csrfToken) {
+    data._token = csrfToken;
+  }
+
   sendRequest({
     method: "POST",
     url: `http://127.0.0.1:8000/api/products/changeStatus`,
-    data: { id, status: 'Delivered' },
+    data: data,
     onSuccess: (result) => {
       console.log(result);
       showToast("Product status changed to Delivered");
