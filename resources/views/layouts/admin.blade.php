@@ -12,6 +12,8 @@
   <title>Pet Comforts Admin Panel</title>
   <script src="{{ asset('assets/js/admin.js') }}" defer></script>
   @livewireStyles
+  {{-- crsf token --}}
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
   <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />

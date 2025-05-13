@@ -20,9 +20,7 @@ Route::middleware(['auth'])->group(function () {
 });
 //allProduct
 Route::get('/allProduct/{id}',AllProduct::class);
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', Admin::class);
-});
+Route::middleware(['auth'])->get('/admin', Admin::class);
 //admin-login
 Route::get('/adminLogin',function(){
     return view('adminLogin');
