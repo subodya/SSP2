@@ -14,6 +14,7 @@ Route::resource('carts', \App\Http\Controllers\CartController::class)->only([
 
 //product route resource productController
 Route::post('/products', [\App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
+Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
 //product delete
 Route::delete('/products/{id}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
 

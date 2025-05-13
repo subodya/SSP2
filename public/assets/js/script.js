@@ -115,7 +115,7 @@ function login() {
         onSuccess: (response) => {
             showToast("Login successful", "bg-green-500");
             localStorage.setItem("user", JSON.stringify(response.user)); // Store user data
-            location.reload(); // Refresh page
+            location.reload(); 
         },
         onError: (error) => {
             console.error("Login failed", error);
@@ -131,7 +131,7 @@ function loadCart() {
 
     sendRequest({
         method: "GET",
-        url: "http://127.0.0.1:8000/api/carts", // Replace with actual endpoint
+        url: "http://127.0.0.1:8000/api/carts", 
         onSuccess: (response) => {
             showToast(response.message, "bg-green-500");
             let cart = response.results;

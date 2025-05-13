@@ -26,14 +26,14 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             
-            'email' =>"kaviska525@gmail.com",
+            'email' =>"subodya007@gmail.com",
          
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
               
 
             'email_verified_at' => now(),
-            'password' =>  Hash::make('Malidunew@123'),
+            'password' =>  Hash::make('Testpass@321'),
             'remember_token' => Str::random(10),
         ];
     }
