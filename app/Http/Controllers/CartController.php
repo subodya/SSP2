@@ -36,12 +36,12 @@ class CartController
                 'quantity' => 'required',
             ]);
 
-            $user = Auth::id();
+            $user = Auth::user();
 
             $cart=Cart::create([
                 'product_id' => $validated['product_id'],
                 'quantity' => $validated['quantity'],
-                'user_id' => $user,
+                'user_id' => $user->id,
             ]);
 
             return ResponseProtocol::success($cart);
