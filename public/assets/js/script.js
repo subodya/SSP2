@@ -91,7 +91,7 @@ function register() {
             showToast("Registration successful", "bg-green-500");
             localStorage.setItem("user", JSON.stringify(response.user)); // Store user data
             //location.reload(); // Refresh page
-            window.location.href = "/home"; // Redirect to home page
+            window.location.href = "/"; // Redirect to home page
 
         },
         onError: (error) => {
@@ -118,7 +118,7 @@ function login() {
             showToast("Login successful", "bg-green-500");
             localStorage.setItem("user", JSON.stringify(response.user)); // Store user data
            //redirect to home page
-            window.location.href = "/home"; // Redirect to home page
+            window.location.href = "/"; // Redirect to home page
         },
         onError: (error) => {
             console.error("Login failed", error);

@@ -36,7 +36,7 @@ class CartController
                 'quantity' => 'required',
             ]);
 
-            $user = Auth::id();;
+            $user = Auth::id();
 
             $cart=Cart::create([
                 'product_id' => $validated['product_id'],
