@@ -255,13 +255,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Handle logout
+       // ...existing code...
     logoutLink.addEventListener('click', function (event) {
         event.preventDefault();
-        localStorage.removeItem('user');
-        showToast("Logged out successfully", "bg-green-500");
-        loginLink.classList.remove('hidden');
-        logoutLink.classList.add('hidden');
+    
+        // Retrieve CSRF token from meta tag
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    
+        fetch('/logout', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                localStorage.removeItem('user');
+                showToast("Logged out successfully", "bg-green-500");
+                loginLink.classList.remove('hidden');
+                logoutLink.classList.add('hidden');
+                window.location.href = '/'; // Redirect to home page
+            } else {
+                showToast("Logout failed", "bg-red-500");
+            }
+        })
+        .catch(() => {
+            showToast("Network error. Please try again.", "bg-red-500");
+        });
     });
+    // ...existing code...
 
     // Function to update cart count
     async function updateCartCount() {
