@@ -15,7 +15,7 @@ class Navigation extends Component
   
     public function render()
     {
-         //load SubCategory categories 1-5
+         //SubCategory categories 1-4
         $this->c1 = SubCategory::where('category_id',1)->get();
         $this->c2 = SubCategory::where('category_id',2)->get();
         $this->c3 = SubCategory::where('category_id',3)->get();
