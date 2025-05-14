@@ -91,6 +91,8 @@ function register() {
             showToast("Registration successful", "bg-green-500");
             localStorage.setItem("user", JSON.stringify(response.user)); // Store user data
             //location.reload(); // Refresh page
+            window.location.href = "/home"; // Redirect to home page
+
         },
         onError: (error) => {
             console.error("Registration failed", error);
@@ -110,12 +112,13 @@ function login() {
 
     sendRequest({
         method: "POST",
-        url: "http://127.0.0.1:8000/login-request", // Laravel Breeze login endpoint
+        url: "http://127.0.0.1:8000/login", // Laravel Breeze login endpoint
         data: data,
         onSuccess: (response) => {
             showToast("Login successful", "bg-green-500");
             localStorage.setItem("user", JSON.stringify(response.user)); // Store user data
-            //location.reload(); Refresh page
+           //redirect to home page
+            window.location.href = "/home"; // Redirect to home page
         },
         onError: (error) => {
             console.error("Login failed", error);
