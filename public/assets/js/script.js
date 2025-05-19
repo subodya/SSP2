@@ -85,7 +85,7 @@ function register() {
 
     sendRequest({
         method: "POST",
-        url: "http://127.0.0.1:8000/register", // Laravel Breeze register endpoint
+        url: "/register", // Laravel Breeze register endpoint
         data: data,
         onSuccess: (response) => {
             showToast("Registration successful", "bg-green-500");
@@ -112,7 +112,7 @@ function login() {
 
     sendRequest({
         method: "POST",
-        url: "http://127.0.0.1:8000/login", // Laravel Breeze login endpoint
+        url: "/login", // Laravel Breeze login endpoint
         data: data,
         onSuccess: (response) => {
             showToast("Login successful", "bg-green-500");
@@ -134,7 +134,7 @@ function loadCart() {
 
     sendRequest({
         method: "GET",
-        url: "http://127.0.0.1:8000/api/carts", 
+        url: "/api/carts", 
         onSuccess: (response) => {
             showToast(response.message, "bg-green-500");
             let cart = response.results;
@@ -289,7 +289,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to update cart count
     async function updateCartCount() {
         try {
-            const response = await fetch("http://127.0.0.1:8000/api/carts", {
+            const response = await fetch("/api/carts", {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -331,7 +331,7 @@ async function addToCart(productId) {
 
     sendRequest({
         method: "POST",
-        url: "http://127.0.0.1:8000/api/carts", // Replace with actual endpoint
+        url: "/api/carts", // Replace with actual endpoint
         data: data,
         onSuccess: (response) => {
             showToast("Product added to cart successfully", "bg-green-500");
@@ -370,7 +370,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function searchProducts(query) {
     sendRequest({
         method: "GET",
-        url: `http://127.0.0.1:8000/api/products?search=${query}`, // Replace with actual endpoint
+        url: `/api/products?search=${query}`, // Replace with actual endpoint
         onSuccess: (response) => {
             displaySearchResults(response.results);
         },

@@ -164,7 +164,7 @@ function deleteProduct(id){
 
   sendRequest({
     method: "DELETE",
-    url: `http://127.0.0.1:8000/api/products/delete`,
+    url: `/api/products/delete`,
     data: data,
     onSuccess: (result) => {
       console.log(result);
@@ -200,7 +200,7 @@ function addProduct(){
 
   sendRequest({
     method: "POST",
-    url: `http://127.0.0.1:8000/api/products`,
+    url: `/api/products`,
     data: formData,
     onSuccess: (result) => {
       console.log(result);
@@ -229,7 +229,7 @@ function addSubCategory(){
   
   sendRequest({
     method: "POST",
-    url: `http://127.0.0.1:8000/api/subcategories`,
+    url: `/api/subcategories`,
     data: data,
     onSuccess: (result) => {
       console.log(result);
@@ -253,7 +253,7 @@ function Deliverd(id){
 
   sendRequest({
     method: "POST",
-    url: `http://127.0.0.1:8000/api/products/changeStatus`,
+    url: `/api/products/changeStatus`,
     data: data,
     onSuccess: (result) => {
       console.log(result);
